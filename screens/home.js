@@ -6,6 +6,7 @@ function Home({ navigation }) {
   const pressHandler = () => {
     console.log('review details button')
     navigation.navigate('ReviewDetails')
+    // navigation.push('ReviewDetails')
   }
   return(
   <View style={globalStyles.container}>
