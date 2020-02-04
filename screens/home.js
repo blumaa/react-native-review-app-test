@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity
+} from "react-native";
 import { globalStyles } from "../styles/global";
+import Card from "../shared/card";
 
 function Home({ navigation }) {
   const [reviews, setReviews] = useState([
@@ -25,11 +32,18 @@ function Home({ navigation }) {
   ]);
   return (
     <View style={globalStyles.container}>
-      <FlatList data={reviews} renderItem={({item})=> (
-          <TouchableOpacity onPress={()=>navigation.navigate('ReviewDetails', item)}>
-            <Text style={globalStyles.titleText}>{item.title}</Text>
+      <FlatList
+        data={reviews}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => navigation.navigate("ReviewDetails", item)}
+          >
+            <Card>
+              <Text style={globalStyles.titleText}>{item.title}</Text>
+            </Card>
           </TouchableOpacity>
-        )}/>
+        )}
+      />
     </View>
   );
 }
