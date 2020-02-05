@@ -11,6 +11,7 @@ import {
 import { globalStyles } from "../styles/global";
 import Card from "../shared/card";
 import { MaterialIcons } from "@expo/vector-icons";
+import ReviewForm from './reviewForm'
 
 function Home({ navigation }) {
   const [ modalOpen, setModalOpen] = useState(false);
@@ -38,10 +39,10 @@ function Home({ navigation }) {
     <View style={globalStyles.container}>
 
       <Modal visible={modalOpen} animationType='fade'>
-        <View style={StyleSheet.modalContent}>
+        <View style={styles.modalContent}>
 
           <MaterialIcons name="close" size={24} onPress={()=>setModalOpen(false)} style={{...styles.modalToggle, ...styles.modalClose}}></MaterialIcons>
-          <Text>Hello friend</Text>
+          <ReviewForm />
 
         </View>
       </Modal>

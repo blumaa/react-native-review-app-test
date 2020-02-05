@@ -9,12 +9,12 @@ export default function ReviewForm() {
       <Formik initialValues={{ title: "", body: "", rating: "" }} onSubmit={(values)=>{
           console.log(values)
         }}>
-        {(props)=>(
+        {props=>(
           <View>
-            <TextInput style={globalStyles.input} placeholder='review title' onChange={props.handleChange('title')} value={props.values.title}/>
-            <TextInput style={globalStyles.input} placeholder='review body' onChange={props.handleChange('body')} value={props.values.body} multiline/>
-            <TextInput style={globalStyles.input} placeholder='Rating (1-5)' onChange={props.handleChange('rating')} value={props.values.rating}/>
-            <Button title='submit' color='maroon' onPress={props.handleSubmit}
+            <TextInput style={globalStyles.input} placeholder='review title' onChangeText={props.handleChange('title')} value={props.values.title}/>
+            <TextInput style={globalStyles.input} placeholder='review body' onChangeText={props.handleChange('body')} value={props.values.body} multiline/>
+            <TextInput style={globalStyles.input} placeholder='Rating (1-5)' onChangeText={props.handleChange('rating')} value={props.values.rating} keyboardType='numeric'/>
+            <Button title='Submit' color='maroon' onPress={props.handleSubmit} />
           </View>
         )}
       </Formik>
