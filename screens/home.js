@@ -37,16 +37,16 @@ function Home({ navigation }) {
   return (
     <View style={globalStyles.container}>
 
-      <Modal visible={modalOpen}>
-        <View style={StyleSheet.modalContent} >
+      <Modal visible={modalOpen} animationType='fade'>
+        <View style={StyleSheet.modalContent}>
 
+          <MaterialIcons name="close" size={24} onPress={()=>setModalOpen(false)} style={{...styles.modalToggle, ...styles.modalClose}}></MaterialIcons>
           <Text>Hello friend</Text>
-          <MaterialIcons name="close" size={24} onPress={()=>setModalOpen(false)}></MaterialIcons>
 
         </View>
       </Modal>
 
-      <MaterialIcons name="add" size={24} onPress={()=>setModalOpen(true)}></MaterialIcons>
+      <MaterialIcons name="add" size={24} onPress={()=>setModalOpen(true)} style={styles.modalToggle}></MaterialIcons>
 
       <FlatList
         data={reviews}
@@ -65,3 +65,21 @@ function Home({ navigation }) {
 }
 
 export default Home;
+
+const styles = StyleSheet.create({
+  modalToggle: {
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#f2f2f2',
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: 'center'
+  },
+  modalClose: {
+    marginTop: 20,
+    marginBottom: 0
+  },
+  modalContent: {
+    flex: 1
+  }
+})
