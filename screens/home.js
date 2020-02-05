@@ -4,12 +4,16 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  Button,
+  Modal
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import Card from "../shared/card";
+import { MaterialIcons } from "@expo/vector-icons";
 
 function Home({ navigation }) {
+  const [ modalOpen, setModalOpen] = useState(false);
   const [reviews, setReviews] = useState([
     {
       title: "Zelda, Breath of Fresh Air",
@@ -32,6 +36,18 @@ function Home({ navigation }) {
   ]);
   return (
     <View style={globalStyles.container}>
+
+      <Modal visible={modalOpen}>
+        <View style={StyleSheet.modalContent} >
+
+          <Text>Hello friend</Text>
+          <MaterialIcons name="close" size={24} onPress={()=>setModalOpen(false)}></MaterialIcons>
+
+        </View>
+      </Modal>
+
+      <MaterialIcons name="add" size={24} onPress={()=>setModalOpen(true)}></MaterialIcons>
+
       <FlatList
         data={reviews}
         renderItem={({ item }) => (
