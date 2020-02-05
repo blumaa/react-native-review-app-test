@@ -6,7 +6,9 @@ import {
   FlatList,
   TouchableOpacity,
   Button,
-  Modal
+  Modal,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import Card from "../shared/card";
@@ -48,12 +50,14 @@ function Home({ navigation }) {
     <View style={globalStyles.container}>
 
       <Modal visible={modalOpen} animationType='fade'>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.modalContent}>
 
           <MaterialIcons name="close" size={24} onPress={()=>setModalOpen(false)} style={{...styles.modalToggle, ...styles.modalClose}}></MaterialIcons>
           <ReviewForm addReview={addReview}/>
 
         </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       <MaterialIcons name="add" size={24} onPress={()=>setModalOpen(true)} style={styles.modalToggle}></MaterialIcons>
