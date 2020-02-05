@@ -35,6 +35,15 @@ function Home({ navigation }) {
       key: "3"
     }
   ]);
+
+  const addReview = (review) => {
+    review.key = Math.random().toString();
+    setReviews((currentReviews)=>{
+      return [review, ...currentReviews]
+    });
+    setModalOpen(false);
+  }
+
   return (
     <View style={globalStyles.container}>
 
@@ -42,7 +51,7 @@ function Home({ navigation }) {
         <View style={styles.modalContent}>
 
           <MaterialIcons name="close" size={24} onPress={()=>setModalOpen(false)} style={{...styles.modalToggle, ...styles.modalClose}}></MaterialIcons>
-          <ReviewForm />
+          <ReviewForm addReview={addReview}/>
 
         </View>
       </Modal>
